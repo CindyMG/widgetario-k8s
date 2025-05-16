@@ -6,6 +6,8 @@ integrates observability tools such as Prometheus and Grafana, and follows best 
 DevOps workflows including configuration management, persistent storage, and readiness for production
 environments.
 
+https://github.com/user-attachments/assets/9e44f0a4-7d2c-4994-8da4-5fdcbd92823d
+
 ## Objectives
 
 The main goals of the project were:

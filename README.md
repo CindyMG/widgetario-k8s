@@ -8,6 +8,11 @@ environments.
 
 https://github.com/user-attachments/assets/9e44f0a4-7d2c-4994-8da4-5fdcbd92823d
 
+## Group Members
+- 148322 - Kuria Rehema Manuella
+- 138982 - Cindy Mugure Gachuhi
+- 149264 - Mwaura Margaret Wambui
+
 ## Objectives
 
 The main goals of the project were:

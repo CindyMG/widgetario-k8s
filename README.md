@@ -39,8 +39,8 @@ cd
 
 **Part 1: Kubernetes Deployment**
 * Successfully containerized:
- - FastAPI backend application.
- - PostgreSQL database instance.
+  FastAPI backend application.
+  PostgreSQL database instance.
 * Deployed backend and database as Kubernetes Deployments.
 * Exposed them via ClusterIP Services.
 

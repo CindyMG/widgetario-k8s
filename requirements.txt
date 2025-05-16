@@ -1,0 +1,14 @@
+fastapi
+uvicorn
+jinja2
+sqlalchemy
+python-multipart
+pydantic
+typing-extensions
+passlib
+itsdangerous
+starlette-exporter
+prometheus-fastapi-instrumentator
+PyJWT
+python-jose
+

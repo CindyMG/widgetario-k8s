@@ -83,6 +83,7 @@ cd
  - Authentication success/failure rates.
  - Database connection health.
 * Logging stack (EFK) proposed for future centralized log collection.
+![Image](https://github.com/user-attachments/assets/f9a820c7-e879-4969-974d-a42481280e20)
 
  **Part 7 - CI/CD**
 

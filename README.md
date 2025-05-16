@@ -24,6 +24,19 @@ Minikube (for local cluster setup)
 
 Docker
 
+# Cloning the Repository
+
+1. Have a running Kubernetes cluster (e.g., Minikube).
+2. Clone the repository:
+
+```bash
+git clone https://github.com/CindyMG/widgetario-k8s
+```
+3. Navigate to the directory
+```bash
+cd 
+```
+
 # Project Breakdown
 
 **Part 1: Application Deployment**

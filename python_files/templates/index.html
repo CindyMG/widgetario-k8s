@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do List</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #fff9f3;
+      color: #3e3e3e;
+      margin: 2rem auto;
+      max-width: 700px;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      color: #f28cb1;
+      text-align: center;
+    }
+
+    a {
+      color: #8c52ff;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      background: #fff;
+      margin: 10px 0;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .done {
+      color: green;
+    }
+
+    .not-done {
+      color: crimson;
+    }
+
+    .priority {
+      font-weight: bold;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+    }
+
+    .low {
+      background-color: #d3f8d3;
+    }
+
+    .medium {
+      background-color: #f8f4d3;
+    }
+
+    .high {
+      background-color: #f8d3d3;
+    }
+
+    .btn {
+      background: #ffd6e0;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: #fbb6ce;
+    }
+  </style>
+</head>
+<body>
+  <h1>🌼 My To-Do List</h1>
+  <div style="text-align: center;">
+    <a href="/create">➕ Add Task</a> | 
+    <a href="/analytics">📊 Analytics</a>
+  </div>
+  <ul>
+    {% for todo in todos %}
+      <li>
+        <span>{{ todo.title }} ({{ todo.category }})</span>
+        <span class="priority 
+            {% if todo.priority == True %} low {% else %} high {% endif %}">
+            {{ 'Low' if todo.priority else 'High' }} Priority
+        </span>
+        <span>Due: {{ todo.due_date }}</span>
+        {% if todo.recurrence != 'none' %}
+         
+        {% endif %}
+        {% if todo.completed %}
+          <span class="done">✅ Done</span>
+        {% else %}
+          <span class="not-done">❌ Pending</span>
+          <a class="btn" href="/complete/{{ todo.id }}">Mark as Done</a>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+  <a href="/logout">← Logout</a>
+</body>
+</html>

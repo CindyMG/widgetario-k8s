@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analytics</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f5f9ff;
+      color: #333;
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #6c63ff;
+    }
+
+    p {
+      font-size: 1.1rem;
+    }
+
+    ul {
+      padding-left: 1rem;
+    }
+
+    li {
+      margin: 0.5rem 0;
+    }
+
+    .analytics-section {
+      margin-top: 2rem;
+    }
+
+    .analytics-section h2 {
+      color: #6c63ff;
+    }
+
+    a {
+      display: block;
+      margin-top: 1.5rem;
+      text-align: center;
+      color: #8c52ff;
+      text-decoration: none;
+    }
+
+    .stats-summary {
+      margin-bottom: 1rem;
+    }
+
+    .category-stats {
+      margin-top: 1rem;
+    }
+
+    .priority-stats {
+      margin-top: 1rem;
+    }
+
+  </style>
+</head>
+<body>
+  <h1>📊 Task Analytics</h1>
+  
+  <div class="stats-summary">
+    <p>Total Tasks: <strong>{{ total }}</strong></p>
+    <p>✅ Completed: <strong>{{ completed }}</strong></p>
+    <p>❌ Incomplete: <strong>{{ incomplete }}</strong></p>
+    <p>⏳ Overdue Tasks: <strong>{{ overdue }}</strong></p>
+  </div>
+
+  <div class="analytics-section">
+    <h2>By Category</h2>
+    <ul>
+      {% for cat, stats in by_category.items() %}
+        <li><strong>{{ cat }}</strong> — ✅ {{ stats.completed }} | ❌ {{ stats.incomplete }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  
+
+  <div class="analytics-section">
+    <h2>Task Completion Rate</h2>
+    <p>Completion Rate: <strong>{{ completion_rate }}%</strong></p>
+  </div>
+
+  <div class="analytics-section">
+    <h2>Task Streaks</h2>
+    <p>Current Streak: <strong>{{ current_streak }}</strong> days</p>
+    <p>Longest Streak: <strong>{{ longest_streak }}</strong> days</p>
+  </div>
+
+  <a href="/dashboard">← Back to Home</a>
+</body>
+</html>

@@ -6,29 +6,23 @@ integrates observability tools such as Prometheus and Grafana, and follows best 
 DevOps workflows including configuration management, persistent storage, and readiness for production
 environments.
 
-# Objectives
+## Objectives
 
 The main goals of the project were:
 
 - To design Kubernetes manifests for a multi-tier application.
-
 - To implement secure environment configurations using Secrets and ConfigMaps.
-
 - To handle both ephemeral and persistent storage needs within the cluster.
-
 - To scale services and apply service exposure techniques like load balancing.
 
-# Tools and Technologies Used
+## Tools and Technologies Used
 
 Kubernetes
-
 kubectl
-
 Minikube (for local cluster setup)
-
 Docker
 
-# Cloning the Repository
+## Installation Guide
 
 1. Have a running Kubernetes cluster (e.g., Minikube).
 2. Clone the repository:
@@ -89,9 +83,7 @@ cd
  **Part 7 - CI/CD**
 
 
-**Cleanup** 
-
-# Challenges Faced
+## Challenges Faced
 
 **3.1 Application Crashing on Startup**
 
@@ -121,7 +113,7 @@ Resolution:
    
 - Ensured only one service bound to port 9090
 
-# Key Takeaways
+## Key Takeaways
 
 Gained hands-on experience managing complex Kubernetes deployments.
 
@@ -129,6 +121,6 @@ Learned the practical utility of volumes, Secrets, and multi-replica services.
 
 Developed a better understanding of how declarative infrastructure supports scaling and resiliency.
 
-# Conclusion
+## Conclusion
 
 This project provided an excellent platform to reinforce theoretical Kubernetes concepts with practical, scenario-based learning. Each phase added a layer of complexity, mirroring real-world engineering challenges. The experience has improved my ability to design, deploy, and manage Kubernetes-native applications effectively.

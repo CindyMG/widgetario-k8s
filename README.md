@@ -41,21 +41,51 @@ git clone https://github.com/CindyMG/widgetario-k8s
 cd 
 ```
 
-# Project Breakdown
+## Project Breakdown
 
-**Part 1: Application Deployment**
+**Part 1: Kubernetes Deployment**
+* Successfully containerized:
+ - FastAPI backend application.
+ - PostgreSQL database instance.
+* Deployed backend and database as Kubernetes Deployments.
+* Exposed them via ClusterIP Services.
 
-**Part 2: Configuration**
+**Part 2: Configuration Management**
+* Used Kubernetes Secrets to secure:
+ - PostgreSQL credentials.
+ - JWT tokens and private app settings.
+* Applied ConfigMaps for non-sensitive configurations such as:
+ - Environment variables.
+ - JWT expiry settings.
+ - Debug/production mode flags
 
- **Part 3: Storage**
+**Part 3: Persistent Storage**
+* Configured PersistentVolumeClaim (PVC) for PostgreSQL to ensure data persistence across pod restarts and crashes.
+* Future volumes (e.g., emptyDir) have been proposed for ephemeral analytics data
 
- **Part 4 - Ingress**
+**Part 4 - Ingress and DNS Configuration**
+* Installed NGINX Ingress Controller.
+* Configured domain routing:
+ - api.todo.local mapped to the backend FastAPI service.
+* Edited the local /etc/hosts file to support local development and testing via custom domain names.
 
- **Part 5 - Productionizing**
+**Part 5 - Production Readiness**
+* Added liveness and readiness probes to Kubernetes manifests.
+* Set resource requests and limits for CPU and memory per container.
+* Defined securityContext to run containers as non-root users.
+* Enabled rolling updates for zero-downtime deployments.
 
- **Part 6 - Observability**
+ **Part 6 - Observability with Monitoring and Logging**
+* Integrated Prometheus with FastAPI’s /metrics endpoint using starlette_exporter.
+* Deployed Grafana, linked to Prometheus as a data source.
+* Created dashboards to monitor:
+ - API request count and latency.
+ - Authentication success/failure rates.
+ - Database connection health.
+* Logging stack (EFK) proposed for future centralized log collection.
 
  **Part 7 - CI/CD**
+
 
 **Cleanup** 
 

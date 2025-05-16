@@ -1,4 +1,4 @@
-# widgetario-k8s
+# Docker/Kubernetes To-Do List App Deployment
 
 This repository outlines the progress made on the development and deployment of a containerized
 FastAPI-based To-Do application using Kubernetes, Docker, and CI/CD pipelines. The system

@@ -1,18 +1,22 @@
 # widgetario-k8s
 
-This repository contains the work completed during the Kubernetes CourseLabs Hackathon. In order to replicate a real-world use case, the goal was to deploy and manage a multi-component application in a Kubernetes environment. A To-Do List application had been deployed, applying theoretical understanding of Kubernetes to real-world implementation challenges involving application deployment, configuration, storage, and scaling.
+This repository outlines the progress made on the development and deployment of a containerized
+FastAPI-based To-Do application using Kubernetes, Docker, and CI/CD pipelines. The system
+integrates observability tools such as Prometheus and Grafana, and follows best practices for modern
+DevOps workflows including configuration management, persistent storage, and readiness for production
+environments.
 
 # Objectives
 
 The main goals of the project were:
 
-To design Kubernetes manifests for a multi-tier application.
+- To design Kubernetes manifests for a multi-tier application.
 
-To implement secure environment configurations using Secrets and ConfigMaps.
+- To implement secure environment configurations using Secrets and ConfigMaps.
 
-To handle both ephemeral and persistent storage needs within the cluster.
+- To handle both ephemeral and persistent storage needs within the cluster.
 
-To scale services and apply service exposure techniques like load balancing.
+- To scale services and apply service exposure techniques like load balancing.
 
 # Tools and Technologies Used
 
@@ -57,13 +61,33 @@ cd
 
 # Challenges Faced
 
-Managing interdependent services and ensuring startup order.
+**3.1 Application Crashing on Startup**
 
-Debugging misconfigured environment variables and service ports.
+<pre> ModuleNotFoundError: No module named 'database' </pre>
 
-Ensuring proper persistence settings during database restarts.
+Root cause: incorrect import path inside Docker container due to mismatched module structure.
 
-These challenges were addressed through pod inspection, logs analysis, and testing each component in isolation before integration.
+**3.2 Prometheus/Grafana Metrics Not Visible**
+
+Prometheus UI was accessible on localhost:9090 but showed no active targets or data.
+
+Grafana dashboards remained empty.
+
+Actions Taken:
+
+  - Confirmed FastAPI /metrics endpoint was reachable.
+
+  - Inspected container logs and Prometheus status.
+  
+**3.3 Local Port Conflicts (Windows)**
+
+Prometheus port (9090) was occasionally stuck in TIME_WAIT.
+
+Resolution:
+
+- Restarted Prometheus container/service.
+   
+- Ensured only one service bound to port 9090
 
 # Key Takeaways
 

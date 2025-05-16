@@ -46,6 +46,11 @@ cd
 * Deployed backend and database as Kubernetes Deployments.
 * Exposed them via ClusterIP Services.
 
+  **Proof**:
+- `k8s/postgres-deployment.yaml`
+- `k8s/postgres-service.yaml`
+- `Dockerfile`
+
 **Part 2: Configuration Management**
 * Used Kubernetes Secrets to secure:
  - PostgreSQL credentials.
@@ -55,9 +60,18 @@ cd
  - JWT expiry settings.
  - Debug/production mode flags
 
+ **Proof**:
+- `k8s/secrets.yaml`
+- `k8s/configmap.yaml`
+- `app/main.py`
+
 **Part 3: Persistent Storage**
 * Configured PersistentVolumeClaim (PVC) for PostgreSQL to ensure data persistence across pod restarts and crashes.
 * Future volumes (e.g., emptyDir) have been proposed for ephemeral analytics data
+
+**Proof**:
+- `k8s/postgres-pvc.yaml`
+- `postgres-deployment.yaml` shows volume mounts
 
 **Part 4 - Ingress and DNS Configuration**
 * Installed NGINX Ingress Controller.
@@ -65,11 +79,20 @@ cd
  - api.todo.local mapped to the backend FastAPI service.
 * Edited the local /etc/hosts file to support local development and testing via custom domain names.
 
+**Proof**:
+- `k8s/ingress.yaml`
+
 **Part 5 - Production Readiness**
 * Added liveness and readiness probes to Kubernetes manifests.
 * Set resource requests and limits for CPU and memory per container.
 * Defined securityContext to run containers as non-root users.
 * Enabled rolling updates for zero-downtime deployments.
+
+**Proof**:
+- `backend-deployment.yaml`:
+  - `readinessProbe`, `livenessProbe`
+  - `resources:`
+  - `securityContext:`
 
  **Part 6 - Observability with Monitoring and Logging**
 * Integrated Prometheus with FastAPI’s /metrics endpoint using starlette_exporter.
@@ -79,10 +102,27 @@ cd
  - Authentication success/failure rates.
  - Database connection health.
 * Logging stack (EFK) proposed for future centralized log collection.
+
+**Proof**:
+- `prometheus/prometheus.yml`
+- `app/main.py` imports and exposes metrics
+- `grafana-deployment.yaml`
+
 ![Image](https://github.com/user-attachments/assets/69e64102-dd93-4237-b697-e12382d7b114)
 
 
- **Part 7 - CI/CD**
+## Summary of Evidence Files
+
+| Milestone                     | Files/Folders                                              |
+|------------------------------|------------------------------------------------------------|
+| Kubernetes Deployment        | `k8s/*.yaml`, `Dockerfile`                                |
+| Config Management            | `secrets.yaml`, `configmap.yaml`, `main.py`               |
+| Persistent Storage           | `postgres-pvc.yaml`, `postgres-deployment.yaml`           |
+| Ingress Setup                | `ingress.yaml`, `/etc/hosts`                              |
+| Probes & Resources           | `backend-deployment.yaml`                                 |
+| Monitoring                   | `prometheus.yml`, `main.py`, `grafana-deployment.yaml`    |
+| CI/CD + Helm                 | `.github/workflows/`, `helm/`, `values.yaml`              |
+
 
 
 ## Challenges Faced
